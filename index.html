@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cert Master / 考证匠 — Brand Book</title>
+  <meta name="description" content="考证匠 设计系统 / 品牌手册 — 你的 AI 考证搭子，学习更高效。" />
+  <link rel="stylesheet" href="tokens/tokens.css" />
+  <style>
+    /* ===== Page chrome ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--cm-font-sans);
+      background: var(--cm-canvas);
+      color: var(--cm-ink);
+      line-height: var(--cm-lh-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--cm-sky); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: var(--cm-font-mono); font-size: 13px; background: var(--cm-fog); padding: 1px 6px; border-radius: var(--cm-radius-xs); color: var(--cm-graphite); }
+
+    /* —— 通用：内嵌小企鹅头像（替代 🐧 emoji） —— */
+    .peng { display: inline-block; vertical-align: middle; object-fit: contain; }
+    .peng-14 { width: 14px; height: 14px; }
+    .peng-16 { width: 16px; height: 16px; }
+    .peng-18 { width: 18px; height: 18px; }
+    .peng-22 { width: 22px; height: 22px; }
+    .peng-24 { width: 24px; height: 24px; }
+    .peng-28 { width: 28px; height: 28px; }
+    .peng-32 { width: 32px; height: 32px; }
+    .peng-44 { width: 44px; height: 44px; }
+
+    .page { max-width: 1200px; margin: 0 auto; padding: 48px 32px 96px; }
+
+    .top-band {
+      position: relative; display: block;
+      border-radius: var(--cm-radius-xl);
+      box-shadow: var(--cm-shadow-lg);
+      margin-bottom: 24px; overflow: hidden;
+      line-height: 0;
+    }
+    .top-band img { width: 100%; height: auto; display: block; }
+    .meta-strip {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 18px;
+      padding: 18px 24px; border-radius: var(--cm-radius-lg);
+      background: var(--cm-white); margin-bottom: 32px;
+      box-shadow: var(--cm-shadow-sm);
+    }
+    .meta-strip .feature-pills { gap: 8px; }
+    @media (max-width: 700px) {
+      .meta-strip { grid-template-columns: 1fr; gap: 12px; }
+    }
+    .top-band .hero-title {
+      font-size: 46px; font-weight: 800; letter-spacing: -0.02em;
+      margin: 0 0 4px; color: var(--cm-ink);
+      line-height: 1.05;
+    }
+    .top-band .hero-en {
+      font-size: 22px; font-weight: 700; letter-spacing: 0.04em;
+      margin: 0 0 14px; color: var(--cm-graphite);
+    }
+    .top-band .hero-zh-tag {
+      font-size: 14px; color: var(--cm-slate); margin: 0 0 4px;
+    }
+    .top-band .hero-en-tag {
+      font-size: 12px; color: var(--cm-mist); font-style: italic; margin: 0 0 18px;
+    }
+    .feature-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .feature-pills .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: var(--cm-radius-full);
+      background: var(--cm-white); border: 1.5px solid var(--cm-fog);
+      font-size: 13px; font-weight: 600; color: var(--cm-graphite);
+    }
+    .feature-pills .pill .ic {
+      width: 18px; height: 18px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 11px;
+    }
+    .feature-pills .pill.y .ic { background: var(--cm-wash-yellow); }
+    .feature-pills .pill.m .ic { background: var(--cm-wash-mint); }
+    .feature-pills .pill.o .ic { background: var(--cm-wash-orange); }
+    .feature-pills .pill.s .ic { background: var(--cm-wash-sky); }
+
+    section.s {
+      background: var(--cm-white);
+      border-radius: var(--cm-radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--cm-shadow-sm);
+    }
+    section.s > header {
+      display: flex; align-items: baseline; gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--cm-fog);
+    }
+    section.s > header .num {
+      font-family: var(--cm-font-mono);
+      color: var(--cm-mist); font-weight: 600; font-size: 14px;
+    }
+    section.s > header h2 {
+      margin: 0; font-size: 20px; font-weight: 600; color: var(--cm-ink);
+    }
+    section.s > header .zh { color: var(--cm-slate); font-size: 14px; font-weight: 400; }
+
+    .grid { display: grid; gap: 16px; }
+    .g-2 { grid-template-columns: repeat(2, 1fr); }
+    .g-3 { grid-template-columns: repeat(3, 1fr); }
+    .g-4 { grid-template-columns: repeat(4, 1fr); }
+    .g-5 { grid-template-columns: repeat(5, 1fr); }
+    .g-7 { grid-template-columns: repeat(7, 1fr); }
+    .g-8 { grid-template-columns: repeat(8, 1fr); }
+    @media (max-width: 900px) {
+      .g-4, .g-5, .g-7, .g-8 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      div[style*="grid-template-columns:1.2fr 1fr 1fr"],
+      div[style*="grid-template-columns:280px 1fr"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* ===== 01 Color swatches ===== */
+    .swatch {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .swatch .chip {
+      width: 100%; aspect-ratio: 1 / 1;
+      border-radius: var(--cm-radius-md);
+      box-shadow: var(--cm-shadow-sm);
+    }
+    .swatch .chip.outlined { border: 1px solid var(--cm-fog); }
+    .swatch .name { font-weight: 700; font-size: 13px; color: var(--cm-ink); }
+    .swatch .hex { font-family: var(--cm-font-mono); font-size: 11px; color: var(--cm-slate); }
+
+    /* ===== 02 Type scale ===== */
+    .type-row {
+      display: grid; grid-template-columns: 80px 1fr 200px;
+      align-items: baseline; gap: 16px;
+      padding: 14px 0; border-bottom: 1px dashed var(--cm-fog);
+    }
+    .type-row:last-child { border-bottom: 0; }
+    .type-row .label { color: var(--cm-mist); font-family: var(--cm-font-mono); font-size: 12px; }
+    .type-row .specs { color: var(--cm-slate); font-size: 12px; font-family: var(--cm-font-mono); text-align: right; }
+
+    /* ===== 03 Mascot grid ===== */
+    .mascot-cell {
+      background: var(--cm-canvas);
+      border: 1px solid var(--cm-fog);
+      border-radius: var(--cm-radius-md);
+      display: grid; place-items: center;
+      padding: 14px 12px 12px; gap: 8px;
+      grid-template-rows: 1fr auto;
+      transition: transform var(--cm-dur-base) var(--cm-ease-standard), box-shadow var(--cm-dur-base);
+    }
+    .mascot-cell:hover { transform: translateY(-2px); box-shadow: var(--cm-shadow-md); }
+    .mascot-cell .img-box { display: grid; place-items: center; width: 100%; min-height: 130px; }
+    .mascot-cell img { max-width: 100%; max-height: 130px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06)); }
+    .mascot-cell .label {
+      font-size: 13px; color: var(--cm-ink);
+      font-weight: 700; text-align: center;
+    }
+    .mascot-cell .scene {
+      font-size: 11px; color: var(--cm-slate); font-weight: 400;
+      margin-top: 2px;
+    }
+
+    /* ===== 04 Buttons (split pill: left text + right action chip) ===== */
+    .btn-split {
+      display: inline-flex; align-items: stretch;
+      border-radius: var(--cm-radius-full);
+      overflow: hidden;
+      font-family: inherit; font-weight: 700;
+      cursor: pointer; border: 0; padding: 0;
+      transition: transform var(--cm-dur-base) var(--cm-ease-standard),
+                  box-shadow var(--cm-dur-base) var(--cm-ease-standard);
+      height: 48px; font-size: 15px;
+    }
+    .btn-split .text { padding: 0 22px; display: inline-flex; align-items: center; }
+    .btn-split .act {
+      width: 48px; display: inline-flex; align-items: center; justify-content: center;
+      font-size: 18px; font-family: var(--cm-font-mono);
+    }
+
+    .btn-primary { background: var(--cm-yellow); color: var(--cm-ink); box-shadow: var(--cm-glow-yellow); }
+    .btn-primary .act { background: rgba(0,0,0,0.10); color: var(--cm-ink); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(255,197,42,0.5); }
+
+    .btn-hover { background: #FFB800; color: var(--cm-ink); box-shadow: 0 14px 28px rgba(255,197,42,0.55), 0 0 0 4px rgba(255,197,42,0.18); transform: translateY(-1px); }
+    .btn-hover .act { background: rgba(0,0,0,0.18); color: var(--cm-ink); }
+
+    .btn-secondary { background: var(--cm-white); color: var(--cm-ink); border: 1.5px solid var(--cm-fog); box-shadow: var(--cm-shadow-sm); }
+    .btn-secondary .act { background: var(--cm-canvas); color: var(--cm-graphite); border-left: 1.5px solid var(--cm-fog); }
+    .btn-secondary:hover { border-color: var(--cm-yellow); }
+    .btn-secondary:hover .act { border-left-color: var(--cm-yellow); }
+
+    .btn-ghost {
+      background: transparent; color: var(--cm-graphite);
+      border: 0; cursor: pointer; font-family: inherit;
+      font-weight: 600; height: 36px; padding: 0 8px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px;
+    }
+    .btn-ghost:hover { color: #B7860D; }
+    .btn-ghost .arrow { font-family: var(--cm-font-mono); }
+
+    .btn-row {
+      display: grid; grid-template-columns: 140px 1fr;
+      align-items: center; gap: 24px;
+      padding: 16px 0; border-bottom: 1px dashed var(--cm-fog);
+    }
+    .btn-row:last-child { border-bottom: 0; }
+    .btn-row .label { color: var(--cm-slate); font-size: 13px; }
+    .btn-row .label strong { color: var(--cm-ink); display: block; font-size: 13px; }
+
+    /* ===== 05 Inputs ===== */
+    .input, .textarea {
+      width: 100%; font: inherit; color: var(--cm-ink);
+      padding: 12px 16px; border-radius: var(--cm-radius-sm);
+      border: 1.5px solid var(--cm-fog);
+      background: var(--cm-white);
+      transition: border-color var(--cm-dur-base) var(--cm-ease-standard),
+                  box-shadow var(--cm-dur-base) var(--cm-ease-standard);
+    }
+    .input::placeholder, .textarea::placeholder { color: var(--cm-mist); }
+    .input:focus, .textarea:focus {
+      outline: 0; border-color: var(--cm-yellow);
+      box-shadow: 0 0 0 4px rgba(255,197,42,0.18);
+    }
+    .input.filled { background: var(--cm-canvas); border-color: var(--cm-fog); }
+    .input.error  { border-color: var(--cm-orange); background: var(--cm-wash-orange); }
+    .input-group {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .input-group .ig-label {
+      font-size: 12px; font-weight: 600; color: var(--cm-slate);
+    }
+    .input-wrap { position: relative; }
+    .input-wrap .icon {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      color: var(--cm-mist); font-size: 16px; pointer-events: none;
+    }
+    .input-wrap .input { padding-right: 40px; }
+    .err-msg { font-size: 12px; color: var(--cm-orange); }
+
+    .textarea-wrap { position: relative; }
+    .textarea {
+      height: 120px; padding: 12px 16px 32px 16px; resize: none;
+    }
+    .textarea-wrap .counter {
+      position: absolute; right: 12px; bottom: 10px;
+      font-size: 11px; font-family: var(--cm-font-mono);
+      color: var(--cm-mist);
+      background: linear-gradient(to right, transparent 0, var(--cm-white) 12px);
+      padding-left: 24px;
+    }
+
+    /* ===== 06 Chips & Tags ===== */
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px 6px 6px; border-radius: var(--cm-radius-full);
+      font-size: 13px; font-weight: 700;
+      background: var(--cm-wash-yellow); color: #B7860D;
+    }
+    .chip .icon-circle {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--cm-white);
+      display: inline-grid; place-items: center;
+      font-size: 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .chip.mint   { background: var(--cm-wash-mint);   color: #1A8C77; }
+    .chip.sky    { background: var(--cm-wash-sky);    color: #2A6BC4; }
+    .chip.orange { background: var(--cm-wash-orange); color: #C45228; }
+    .chip.taro   { background: var(--cm-wash-taro);   color: #6C4FBF; }
+
+    /* Status chip (with colored dot, no icon circle) */
+    .chip-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px; border-radius: var(--cm-radius-full);
+      font-size: 13px; font-weight: 700;
+    }
+    .chip-status .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .chip-status.mint   { background: var(--cm-wash-mint);   color: #1A8C77; }
+    .chip-status.sky    { background: var(--cm-wash-sky);    color: #2A6BC4; }
+    .chip-status.orange { background: var(--cm-wash-orange); color: #C45228; }
+    .chip-status.yellow { background: var(--cm-wash-yellow); color: #B7860D; }
+
+    .tag-outline {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border-radius: var(--cm-radius-full);
+      font-size: 13px; font-weight: 500; color: var(--cm-graphite);
+      border: 1.5px solid var(--cm-fog); background: var(--cm-white);
+    }
+    .tag-outline.add { color: var(--cm-slate); border-style: dashed; }
+
+    .chip-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* ===== 07 Toggle & Check ===== */
+    .toggle {
+      width: 56px; height: 32px; border-radius: var(--cm-radius-full);
+      background: var(--cm-fog); position: relative; cursor: pointer;
+      transition: background var(--cm-dur-base) var(--cm-ease-standard);
+    }
+    .toggle .knob {
+      position: absolute; top: 3px; left: 3px;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--cm-white);
+      box-shadow: var(--cm-shadow-sm);
+      transition: left var(--cm-dur-base) var(--cm-ease-spring);
+      display: grid; place-items: center;
+      font-size: 14px;
+    }
+    .toggle.on { background: var(--cm-yellow); }
+    .toggle.on .knob { left: 27px; }
+
+    .check {
+      width: 22px; height: 22px; border-radius: 6px;
+      border: 2px solid var(--cm-fog); background: var(--cm-white);
+      display: inline-grid; place-items: center; cursor: pointer;
+    }
+    .check.on { background: var(--cm-yellow); border-color: var(--cm-yellow); }
+    .check.on::before { content: "✓"; color: var(--cm-ink); font-weight: 700; font-size: 14px; }
+
+    .radio {
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 2px solid var(--cm-fog); background: var(--cm-white);
+      display: inline-grid; place-items: center;
+    }
+    .radio.on { border-color: var(--cm-yellow); }
+    .radio.on::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--cm-yellow); }
+
+    .check-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+    .check-row .lbl { font-size: 14px; color: var(--cm-graphite); }
+
+    /* ===== 08 Icons ===== */
+    .icon-cell {
+      aspect-ratio: 1 / 1;
+      background: var(--cm-canvas);
+      border: 1px solid var(--cm-fog);
+      border-radius: var(--cm-radius-md);
+      display: grid; place-items: center; gap: 4px;
+      padding: 12px;
+      grid-template-rows: 1fr auto;
+    }
+    .icon-cell svg { width: 28px; height: 28px; stroke: var(--cm-graphite); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .icon-cell .name { font-size: 11px; color: var(--cm-slate); }
+
+    /* ===== 09 Navigation ===== */
+    .nav-top {
+      display: flex; align-items: center; gap: 16px;
+      padding: 12px 20px; background: var(--cm-white);
+      border-radius: var(--cm-radius-lg);
+      box-shadow: var(--cm-shadow-sm);
+      border: 1px solid var(--cm-fog);
+    }
+    .nav-top .menu { color: var(--cm-graphite); font-size: 18px; cursor: pointer; }
+    .nav-top .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+    .nav-top .brand .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--cm-yellow); display: grid; place-items: center; font-size: 12px; }
+    .nav-top .grow { flex: 1; }
+    .nav-top .icon-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--cm-canvas); border: 1px solid var(--cm-fog);
+      display: grid; place-items: center; cursor: pointer;
+    }
+
+    .nav-side {
+      display: flex; flex-direction: column;
+      padding: 14px; background: var(--cm-canvas);
+      border-radius: var(--cm-radius-md); gap: 4px;
+      border: 1px solid var(--cm-fog);
+    }
+    .nav-side .item {
+      padding: 10px 14px; border-radius: var(--cm-radius-sm);
+      color: var(--cm-graphite); display: flex; align-items: center; gap: 10px;
+      font-size: 14px;
+    }
+    .nav-side .item.active { background: var(--cm-wash-yellow); color: #8E6505; font-weight: 600; }
+
+    .nav-bottom {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      background: var(--cm-white); border-radius: var(--cm-radius-md);
+      border: 1px solid var(--cm-fog); padding: 10px;
+    }
+    .nav-bottom .b {
+      display: grid; place-items: center; gap: 4px;
+      padding: 6px 0; color: var(--cm-mist);
+      font-size: 11px;
+    }
+    .nav-bottom .b.active { color: var(--cm-yellow); font-weight: 700; }
+
+    /* ===== 10 Progress & Steps ===== */
+    .progress {
+      position: relative; height: 16px;
+      background: var(--cm-fog);
+      border-radius: var(--cm-radius-full);
+      overflow: hidden;
+    }
+    .progress .bar {
+      height: 100%; width: 72%;
+      background:
+        repeating-linear-gradient(-45deg,
+          rgba(255,255,255,0.28) 0,
+          rgba(255,255,255,0.28) 8px,
+          transparent 8px, transparent 16px),
+        var(--cm-yellow);
+      animation: stripe-march 1.6s linear infinite;
+      border-radius: var(--cm-radius-full);
+    }
+    @keyframes stripe-march {
+      from { background-position: 0 0, 0 0; }
+      to   { background-position: -32px 0, 0 0; }
+    }
+    .progress-wrap {
+      position: relative; padding-right: 60px;
+    }
+    .progress-wrap .tracker {
+      position: absolute; top: -16px; left: calc(72% - 22px);
+      width: 44px; height: 44px;
+      background: var(--cm-white);
+      border-radius: 50%;
+      box-shadow: var(--cm-shadow-md);
+      display: grid; place-items: center;
+      font-size: 24px;
+    }
+    .progress-wrap .pct {
+      position: absolute; right: 0; top: -2px;
+      font-weight: 700; color: var(--cm-ink); font-size: 16px;
+    }
+
+    .steps { display: flex; align-items: center; gap: 12px; }
+    .step {
+      display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1;
+    }
+    .step .ball {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--cm-canvas); color: var(--cm-mist);
+      border: 2px solid var(--cm-fog); font-weight: 700;
+    }
+    .step.active .ball { background: var(--cm-yellow); color: var(--cm-ink); border-color: var(--cm-yellow); box-shadow: var(--cm-glow-yellow); }
+    .step.done .ball { background: var(--cm-yellow); color: var(--cm-ink); border-color: var(--cm-yellow); }
+    .step .lbl { font-size: 12px; color: var(--cm-graphite); }
+    .step.active .lbl { font-weight: 700; }
+    .step-bar { height: 2px; background: var(--cm-fog); flex: 1; }
+    .step-bar.done { background: var(--cm-yellow); }
+
+    /* Stat cards */
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 700px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat {
+      background: var(--cm-white); padding: 16px;
+      border-radius: var(--cm-radius-md);
+      border: 1px solid var(--cm-fog);
+    }
+    .stat .num { font-size: 28px; font-weight: 700; color: var(--cm-ink); letter-spacing: -0.01em; }
+    .stat .lbl { font-size: 12px; color: var(--cm-slate); margin-top: 4px; }
+
+    .streak {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--cm-wash-orange); padding: 12px 16px;
+      border-radius: var(--cm-radius-md); color: #C45228; font-weight: 700;
+    }
+    .keep-going {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--cm-wash-yellow); padding: 12px 16px;
+      border-radius: var(--cm-radius-md); color: #8E6505;
+    }
+
+    /* ===== 11 Alerts ===== */
+    .alert {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 12px 16px; border-radius: var(--cm-radius-md);
+      font-size: 14px;
+    }
+    .alert .x { margin-left: auto; color: var(--cm-mist); cursor: pointer; }
+    .alert .icon-wrap { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; color: white; font-weight: 700; font-size: 13px; }
+    .alert .body .t { font-weight: 600; color: var(--cm-ink); }
+    .alert .body .d { color: var(--cm-slate); font-size: 13px; }
+    .alert.success { background: var(--cm-wash-mint); }
+    .alert.success .icon-wrap { background: var(--cm-mint); }
+    .alert.warning { background: var(--cm-wash-yellow); }
+    .alert.warning .icon-wrap { background: var(--cm-yellow); color: var(--cm-ink); }
+    .alert.danger  { background: var(--cm-wash-orange); }
+    .alert.danger .icon-wrap { background: var(--cm-orange); }
+    .alert.info    { background: var(--cm-wash-sky); }
+    .alert.info .icon-wrap { background: var(--cm-sky); }
+
+    /* ===== 12 Cards ===== */
+    .card {
+      background: var(--cm-white);
+      border-radius: var(--cm-radius-lg);
+      border: 1px solid var(--cm-fog);
+      box-shadow: var(--cm-shadow-sm);
+      transition: transform var(--cm-dur-base), box-shadow var(--cm-dur-base);
+      display: flex; flex-direction: column;
+      overflow: hidden; position: relative;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: var(--cm-shadow-md); }
+    .card .pic {
+      height: 180px; display: grid; place-items: center;
+      overflow: hidden; position: relative;
+    }
+    .card .pic img { display: block; max-height: 92%; max-width: 92%; object-fit: contain; }
+    .card .pic.y { background: linear-gradient(135deg, var(--cm-wash-yellow) 0%, #FFE894 100%); }
+    .card .pic.o { background: linear-gradient(135deg, var(--cm-wash-orange) 0%, #FFC9B0 100%); }
+    .card .pic.m { background: linear-gradient(135deg, var(--cm-wash-mint) 0%, #B5EBDD 100%); }
+    .card .pic.t { background: linear-gradient(135deg, var(--cm-wash-taro) 0%, #D2C4FB 100%); }
+    .card .body {
+      padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 6px;
+      position: relative;
+    }
+    .card .t { font-weight: 700; color: var(--cm-ink); font-size: 16px; }
+    .card .d { font-size: 12px; color: var(--cm-slate); line-height: 1.5; }
+    .card .arrow {
+      position: absolute; top: -22px; right: 16px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--cm-yellow); color: var(--cm-ink);
+      display: grid; place-items: center; font-weight: 700;
+      box-shadow: var(--cm-glow-yellow);
+      font-size: 18px;
+    }
+
+    /* ===== 13 Modal ===== */
+    .modal-frame {
+      background: var(--cm-white); border-radius: var(--cm-radius-lg);
+      padding: 28px; max-width: 380px;
+      box-shadow: var(--cm-shadow-lg);
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      text-align: center;
+    }
+    .modal-frame .upload-zone {
+      width: 100%; padding: 32px 16px;
+      border: 2px dashed var(--cm-fog);
+      border-radius: var(--cm-radius-md);
+      background: var(--cm-canvas);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .modal-frame .ic { font-size: 28px; color: var(--cm-yellow); }
+    .modal-frame .t { font-weight: 700; color: var(--cm-ink); font-size: 15px; }
+    .modal-frame .d { font-size: 12px; color: var(--cm-slate); }
+    .modal-frame .x { position: relative; align-self: flex-end; cursor: pointer; color: var(--cm-mist); margin-top: -10px; }
+
+    /* ===== 14 Dropdown ===== */
+    .dropdown {
+      width: 220px; background: var(--cm-white);
+      border-radius: var(--cm-radius-md);
+      border: 1.5px solid var(--cm-yellow);
+      overflow: hidden;
+    }
+    .dropdown .head {
+      padding: 10px 14px; display: flex; align-items: center; justify-content: space-between;
+      font-size: 13px; color: var(--cm-graphite); border-bottom: 1px solid var(--cm-fog);
+    }
+    .dropdown .item {
+      padding: 10px 14px; font-size: 13px; color: var(--cm-graphite);
+    }
+    .dropdown .item.active { background: var(--cm-wash-yellow); color: #8E6505; font-weight: 600; }
+
+    /* ===== 15 Pagination ===== */
+    .pagi {
+      display: flex; align-items: center; gap: 8px;
+      flex-wrap: wrap;
+    }
+    .pagi .b {
+      width: 32px; height: 32px; border-radius: var(--cm-radius-sm);
+      background: var(--cm-white); border: 1px solid var(--cm-fog);
+      display: grid; place-items: center; font-size: 13px; color: var(--cm-graphite);
+      cursor: pointer;
+    }
+    .pagi .b.active { background: var(--cm-yellow); border-color: var(--cm-yellow); color: var(--cm-ink); font-weight: 700; }
+    .pagi .gap { padding: 0 4px; color: var(--cm-mist); }
+    .pagi .info { color: var(--cm-slate); font-size: 12px; margin-left: 12px; }
+    .pagi .input { width: 50px; height: 32px; padding: 0 8px; text-align: center; }
+
+    /* ===== 16 Tooltip ===== */
+    .tooltip-demo { position: relative; display: inline-block; padding-bottom: 60px; }
+    .tooltip {
+      background: var(--cm-ink); color: var(--cm-white);
+      padding: 10px 14px; border-radius: var(--cm-radius-md);
+      font-size: 12px; box-shadow: var(--cm-shadow-md);
+      position: relative;
+    }
+    .tooltip::after {
+      content: ""; position: absolute; top: 100%; left: 22px;
+      border: 6px solid transparent; border-top-color: var(--cm-ink);
+    }
+
+    /* ===== 17 Spacing ===== */
+    .space-cell {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .space-cell .box {
+      border: 1px dashed var(--cm-fog);
+      background: repeating-linear-gradient(45deg, var(--cm-canvas), var(--cm-canvas) 4px, transparent 4px, transparent 8px);
+      border-radius: var(--cm-radius-sm);
+    }
+    .space-cell .lbl { font-family: var(--cm-font-mono); font-size: 11px; color: var(--cm-slate); }
+
+    /* ===== 18 Radius ===== */
+    .radius-cell {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .radius-cell .box {
+      width: 64px; height: 64px;
+      background: var(--cm-wash-yellow);
+      border: 1.5px solid var(--cm-yellow);
+    }
+
+    /* ===== 19 Shadow ===== */
+    .shadow-cell {
+      background: var(--cm-white);
+      border-radius: var(--cm-radius-md);
+      padding: 24px; text-align: center;
+    }
+    .shadow-cell .lbl { font-weight: 700; margin-bottom: 4px; font-size: 14px; }
+    .shadow-cell .v { font-family: var(--cm-font-mono); font-size: 11px; color: var(--cm-slate); }
+
+    /* ===== Sticker ===== */
+    .sticker {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--cm-ink); color: var(--cm-white);
+      padding: 10px 18px; border-radius: var(--cm-radius-full);
+      box-shadow: var(--cm-shadow-md);
+      font-weight: 700;
+    }
+    .sticker .star { color: var(--cm-yellow); }
+    .sticker .sub { color: var(--cm-mist); font-weight: 400; font-size: 12px; }
+
+    /* ===== Do/Don't ===== */
+    .dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 700px) { .dd-grid { grid-template-columns: 1fr; } }
+    .dd {
+      padding: 16px; border-radius: var(--cm-radius-md);
+      background: var(--cm-canvas); font-size: 13px; color: var(--cm-graphite);
+    }
+    .dd.do { border-left: 4px solid var(--cm-mint); }
+    .dd.dont { border-left: 4px solid var(--cm-orange); }
+    .dd .head { font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+    .dd ul { margin: 0; padding-left: 20px; line-height: 1.8; }
+
+    /* ===== TODO note ===== */
+    .todo-note {
+      padding: 12px 16px; background: var(--cm-wash-sky); color: #2A6BC4;
+      border-radius: var(--cm-radius-md); font-size: 12px;
+      border: 1px dashed #5AA7FF;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ TOP BANNER ============ -->
+  <div class="top-band">
+    <img src="assets/banners/hero-dark.png" alt="考证匠 / CERT MASTER · 让考证更简单！"/>
+  </div>
+
+  <div class="meta-strip">
+    <div>
+      <div style="font-size:14px;color:var(--cm-graphite);font-weight:600;">Cert Master / 考证匠 · Brand Book v0.2</div>
+      <div style="font-size:12px;color:var(--cm-slate);margin-top:2px;">你的 AI 考证搭子，学习更高效 · Your AI Study Buddy, Learn Smarter.</div>
+    </div>
+    <div class="feature-pills">
+      <span class="pill y"><span class="ic"><img src="assets/logo/avatar-icon.png" class="peng peng-14" alt=""/></span>AI 助手</span>
+      <span class="pill m"><span class="ic">⚡</span>智能高效</span>
+      <span class="pill o"><span class="ic">🌱</span>陪伴成长</span>
+      <span class="pill s"><span class="ic">✓</span>通过有证</span>
+    </div>
+  </div>
+
+  <div class="todo-note">
+    <strong>📌 进度</strong>：3 logo + 4 card 插图 + 3 张 3D mascot + <strong>8 张扁平 mascot</strong> + dark banner 全部落盘 ✅。装饰素材陆续在加。
+  </div>
+
+  <!-- ============ 00 LOGO ============ -->
+  <section class="s">
+    <header><span class="num">00</span><h2>LOGO</h2><span class="zh">品牌标识 · 三种变体</span></header>
+    <div class="grid g-3">
+      <div style="background:var(--cm-canvas);border-radius:var(--cm-radius-md);padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div style="background:var(--cm-white);border-radius:var(--cm-radius-md);padding:24px 20px;width:100%;display:grid;place-items:center;min-height:140px;">
+          <img src="assets/logo/horizontal.png" alt="horizontal" style="max-height:80px;max-width:100%;"/>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--cm-ink);">Horizontal · 横版</div>
+          <div style="font-size:12px;color:var(--cm-slate);margin-top:4px;">官网 header / 邮件签名 / 横向窄区域</div>
+          <code style="margin-top:6px;display:inline-block;">assets/logo/horizontal.png</code>
+        </div>
+      </div>
+
+      <div style="background:var(--cm-canvas);border-radius:var(--cm-radius-md);padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div style="background:var(--cm-white);border-radius:var(--cm-radius-md);padding:20px;width:100%;display:grid;place-items:center;min-height:140px;">
+          <img src="assets/logo/compact.png" alt="compact" style="max-height:120px;max-width:100%;"/>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--cm-ink);">Compact · 紧凑（竖版）</div>
+          <div style="font-size:12px;color:var(--cm-slate);margin-top:4px;">海报 / PPT 封面 / App 启动屏</div>
+          <code style="margin-top:6px;display:inline-block;">assets/logo/compact.png</code>
+        </div>
+      </div>
+
+      <div style="background:var(--cm-canvas);border-radius:var(--cm-radius-md);padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div style="background:var(--cm-white);border-radius:var(--cm-radius-md);padding:20px;width:100%;display:grid;place-items:center;min-height:140px;">
+          <img src="assets/logo/avatar.png" alt="avatar" style="max-height:120px;max-width:100%;"/>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--cm-ink);">Avatar · 头像 / App Icon</div>
+          <div style="font-size:12px;color:var(--cm-slate);margin-top:4px;">App 图标 / favicon / 头像位 / 收藏</div>
+          <code style="margin-top:6px;display:inline-block;">assets/logo/avatar.png</code>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;padding:14px 18px;background:var(--cm-wash-yellow);border-radius:var(--cm-radius-md);font-size:12px;color:#8E6505;">
+      <strong>📐 净空规则</strong>：logo 四周必须留出 ≥ 企鹅头宽度的 1/4 作为安全边距。
+      <strong>🚫 禁止</strong>：拉伸 / 倾斜 / 改企鹅 fill 颜色 / 给 logo 加阴影 / 放在低对比度 bg 上。
+    </div>
+
+    <!-- Banner usage sub-block -->
+    <div style="margin-top:24px;padding-top:24px;border-top:1px dashed var(--cm-fog);">
+      <div style="font-size:13px;color:var(--cm-graphite);font-weight:600;margin-bottom:14px;">
+        Banner 应用 <span style="color:var(--cm-mist);font-weight:400;">— 同一套 logo / 三种使用场景</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <!-- Variant 1: Dark hero banner -->
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;">
+          <div style="font-size:12px;">
+            <div style="font-weight:700;color:var(--cm-ink);">Dark Hero</div>
+            <div style="color:var(--cm-slate);margin-top:2px;">App 启动屏 / 公众号封面 / 社交卡片</div>
+          </div>
+          <div style="border-radius:var(--cm-radius-lg);overflow:hidden;box-shadow:var(--cm-shadow-md);">
+            <img src="assets/banners/hero-dark.png" alt="dark hero banner" style="display:block;width:100%;height:auto;"/>
+          </div>
+        </div>
+
+        <!-- Variant 2: Light horizontal banner -->
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;">
+          <div style="font-size:12px;">
+            <div style="font-weight:700;color:var(--cm-ink);">Light Banner</div>
+            <div style="color:var(--cm-slate);margin-top:2px;">页眉 / Section header / 邮件签名 / 内文小条</div>
+          </div>
+          <div style="background:var(--cm-white);border:1px solid var(--cm-fog);border-radius:var(--cm-radius-lg);padding:22px 28px;display:flex;align-items:center;gap:18px;">
+            <img src="assets/logo/horizontal.png" alt="horizontal logo banner" style="height:56px;width:auto;flex-shrink:0;"/>
+            <div style="flex:1;border-left:1.5px solid var(--cm-fog);padding-left:18px;">
+              <div style="font-weight:700;color:var(--cm-ink);font-size:14px;">你的 AI 考证搭子</div>
+              <div style="color:var(--cm-slate);font-size:12px;margin-top:2px;">学习更高效 · Your AI Study Buddy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variant 3: Inverted dark strip -->
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;">
+          <div style="font-size:12px;">
+            <div style="font-weight:700;color:var(--cm-ink);">Dark Strip</div>
+            <div style="color:var(--cm-slate);margin-top:2px;">深色页面 footer / 课程证书页眉</div>
+          </div>
+          <div style="background:var(--cm-ink);border-radius:var(--cm-radius-lg);padding:22px 28px;display:flex;align-items:center;gap:18px;">
+            <img src="assets/logo/avatar.png" alt="avatar" style="height:48px;width:48px;border-radius:50%;background:var(--cm-white);flex-shrink:0;"/>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span style="font-size:18px;font-weight:800;color:var(--cm-white);letter-spacing:0.02em;">考证匠</span>
+                <span style="font-size:13px;font-weight:700;color:var(--cm-yellow);letter-spacing:0.08em;">CERT MASTER</span>
+              </div>
+              <div style="font-size:12px;color:var(--cm-mist);margin-top:2px;">让考证更简单</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 00.5 MASCOT 3D ============ -->
+  <section class="s">
+    <header><span class="num">00.5</span><h2>MASCOT 3D</h2><span class="zh">旗舰形象 · 3D 渲染版</span></header>
+    <p style="margin:0 0 18px;color:var(--cm-slate);font-size:13px;">
+      用于 <strong>Hero / 启动屏 / App Store 截图 / 公众号封面 / 社交卡片</strong>。
+      跟 §03 8 个扁平 mascot 互补：扁平用于 UI 内嵌，3D 用于品宣大画面。
+    </p>
+    <div class="grid g-3">
+      <div style="background:linear-gradient(135deg,#FFF7DA 0%,#FFE894 100%);border-radius:var(--cm-radius-lg);padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <img src="assets/mascot-3d/happy.png" alt="happy 3d" style="height:200px;width:auto;filter:drop-shadow(0 14px 24px rgba(0,0,0,0.18));"/>
+        <div style="text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--cm-ink);">Happy / 挥手通过</div>
+          <div style="font-size:12px;color:#8E6505;margin-top:4px;">Hero / 报喜 / 完课庆祝</div>
+          <code style="margin-top:6px;display:inline-block;background:rgba(255,255,255,0.7);">assets/mascot-3d/happy.png</code>
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#DCE9FF 0%,#A5C5F5 100%);border-radius:var(--cm-radius-lg);padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <img src="assets/mascot-3d/thinking.png" alt="thinking 3d" style="height:200px;width:auto;filter:drop-shadow(0 14px 24px rgba(0,0,0,0.18));"/>
+        <div style="text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--cm-ink);">Thinking / 沉思</div>
+          <div style="font-size:12px;color:#2A6BC4;margin-top:4px;">空状态 / loading / 默认头像</div>
+          <code style="margin-top:6px;display:inline-block;background:rgba(255,255,255,0.7);">assets/mascot-3d/thinking.png</code>
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#DAF5EF 0%,#9DDFCD 100%);border-radius:var(--cm-radius-lg);padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <img src="assets/mascot-3d/certified.png" alt="certified 3d" style="height:200px;width:auto;filter:drop-shadow(0 14px 24px rgba(0,0,0,0.18));"/>
+        <div style="text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--cm-ink);">Certified / 持证</div>
+          <div style="font-size:12px;color:#1A8C77;margin-top:4px;">通过页 / 证书页 / 案例展示</div>
+          <code style="margin-top:6px;display:inline-block;background:rgba(255,255,255,0.7);">assets/mascot-3d/certified.png</code>
+        </div>
+      </div>
+    </div>
+    <p style="margin:18px 0 0;font-size:12px;color:var(--cm-slate);">
+      ⚠️ 3D 版只用作主视觉，<strong>不要塞进按钮 / chip / toggle 之类小尺寸 UI</strong>。小尺寸用 §03 扁平版。
+    </p>
+  </section>
+
+  <!-- ============ 01 COLORS ============ -->
+  <section class="s">
+    <header><span class="num">01</span><h2>COLORS</h2><span class="zh">色彩系统</span></header>
+
+    <div style="font-size:13px;color:var(--cm-graphite);font-weight:600;margin-bottom:14px;">品牌色 <span style="color:var(--cm-mist);font-weight:400;">Brand Colors</span></div>
+    <div class="grid g-5" style="margin-bottom:28px;">
+      <div class="swatch"><div class="chip" style="background:#FFC52A"></div><div class="name">考证黄</div><div class="hex">#FFC52A</div></div>
+      <div class="swatch"><div class="chip" style="background:#FF7A45"></div><div class="name">活力橙</div><div class="hex">#FF7A45</div></div>
+      <div class="swatch"><div class="chip" style="background:#2ECCB2"></div><div class="name">薄荷绿</div><div class="hex">#2ECCB2</div></div>
+      <div class="swatch"><div class="chip" style="background:#5AA7FF"></div><div class="name">天空蓝</div><div class="hex">#5AA7FF</div></div>
+      <div class="swatch"><div class="chip" style="background:#A78BFA"></div><div class="name">香芋紫</div><div class="hex">#A78BFA</div></div>
+    </div>
+
+    <div style="font-size:13px;color:var(--cm-graphite);font-weight:600;margin-bottom:14px;">中性色 <span style="color:var(--cm-mist);font-weight:400;">Neutral Colors</span></div>
+    <div class="grid g-7">
+      <div class="swatch"><div class="chip" style="background:#111827"></div><div class="name">深黑</div><div class="hex">#111827</div></div>
+      <div class="swatch"><div class="chip" style="background:#374151"></div><div class="name">深灰</div><div class="hex">#374151</div></div>
+      <div class="swatch"><div class="chip" style="background:#6B7280"></div><div class="name">中灰</div><div class="hex">#6B7280</div></div>
+      <div class="swatch"><div class="chip" style="background:#9CA3AF"></div><div class="name">浅灰</div><div class="hex">#9CA3AF</div></div>
+      <div class="swatch"><div class="chip" style="background:#E5E7EB"></div><div class="name">更浅灰</div><div class="hex">#E5E7EB</div></div>
+      <div class="swatch"><div class="chip" style="background:#F5F6F8"></div><div class="name">背景灰</div><div class="hex">#F5F6F8</div></div>
+      <div class="swatch"><div class="chip outlined" style="background:#FFFFFF"></div><div class="name">白色</div><div class="hex">#FFFFFF</div></div>
+    </div>
+  </section>
+
+  <!-- ============ 02 TYPOGRAPHY ============ -->
+  <section class="s">
+    <header><span class="num">02</span><h2>TYPOGRAPHY</h2><span class="zh">字体系统</span></header>
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:center;">
+      <div style="background:var(--cm-canvas);border-radius:var(--cm-radius-lg);padding:32px 16px;text-align:center;">
+        <div style="font-size:140px;font-weight:700;line-height:1;letter-spacing:-0.04em;color:var(--cm-ink);">Aa</div>
+        <div style="margin-top:14px;font-weight:700;font-size:14px;color:var(--cm-ink);">PingFang SC · 苹方字体</div>
+        <div style="font-size:12px;color:var(--cm-slate);margin-top:4px;">简洁 / 现代 / 易读</div>
+      </div>
+      <div>
+        <div class="type-row"><span class="label">H1</span><span class="cm-h1">大标题 · Aa</span><span class="specs">34px / Bold / -1%</span></div>
+        <div class="type-row"><span class="label">H2</span><span class="cm-h2">小标题 · Aa</span><span class="specs">24px / Semibold / -0.5%</span></div>
+        <div class="type-row"><span class="label">H3</span><span class="cm-h3">三级标题 · Aa</span><span class="specs">20px / Semibold / 0%</span></div>
+        <div class="type-row"><span class="label">Body</span><span class="cm-body">正文内容 — 16px 是默认阅读尺寸，行高 1.6。</span><span class="specs">16px / Regular / 0%</span></div>
+        <div class="type-row"><span class="label">Caption</span><span class="cm-caption">辅助信息 / 时间戳 / footnote</span><span class="specs">12px / Regular / 0%</span></div>
+        <p style="margin:14px 0 0;font-size:12px;color:var(--cm-slate);">等宽 <code>JetBrains Mono</code> 用于题号 / 分数 / 计时器。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 MASCOT ============ -->
+  <section class="s">
+    <header><span class="num">03</span><h2>MASCOT IP</h2><span class="zh">企鹅形象库 · 8 个标准态 · 禁止自创</span></header>
+    <div class="grid g-4">
+      <div class="mascot-cell">
+        <div class="img-box"><img src="assets/mascot/happy.png" alt="开心"/></div>
+        <div class="label">开心 / Happy<div class="scene">完成任务 · 获得奖励</div></div>
+      </div>
+      <div class="mascot-cell">
+        <div class="img-box"><img src="assets/mascot/studying.png" alt="学习中"/></div>
+        <div class="label">学习中 / Studying<div class="scene">默认页面 · 课程进行</div></div>
+      </div>
+      <div class="mascot-cell">
+        <div class="img-box"><img src="assets/mascot/thinking.png" alt="思考中"/></div>
+        <div class="label">思考中 / Thinking<div class="scene">空状态 · 答题暂停</div></div>
+      </div>
+      <div class="mascot-cell">
+        <div class="img-box"><img src="assets/mascot/ai-analyzing.png" alt="AI 分析中"/></div>
+        <div class="label">AI 分析中 / AI<div class="scene">AI 解析 · loading</div></div>
+      </div>
+      <div class="mascot-cell">
+        <div class="img-box"><img src="assets/mascot/sprint.png" alt="冲刺"/></div>
+        <div class="label">冲刺 / Sprint<div class="scene">考前倒计时 · streak</div></div>
+      </div>
+      <div class="mascot-cell">
+        <div class="img-box"><img src="assets/mascot/anxious.png" alt="焦虑"/></div>
+        <div class="label">焦虑 / Anxious<div class="scene">错题多 · 考前压力</div></div>
+      </div>
+      <div class="mascot-cell">
+        <div class="img-box"><img src="assets/mascot/passed.png" alt="通过啦"/></div>
+        <div class="label">通过啦 / Passed<div class="scene">证书拿到 · 解锁</div></div>
+      </div>
+      <div class="mascot-cell">
+        <div class="img-box"><img src="assets/mascot/champion.png" alt="满分拿下"/></div>
+        <div class="label">满分拿下 / Champion<div class="scene">100 分 · 全通过</div></div>
+      </div>
+    </div>
+    <p style="margin:14px 0 0;font-size:12px;color:var(--cm-slate);">
+      ⚠️ 不要自创新表情。新场景必须 map 到已有 8 态。Mascot 跟 UniMate（牛）严格隔离 — Cert Master 只用 <strong>企鹅</strong>。
+    </p>
+  </section>
+
+  <!-- ============ 04 BUTTONS ============ -->
+  <section class="s">
+    <header><span class="num">04</span><h2>BUTTONS</h2><span class="zh">按钮系统 · 双色拼接 pill</span></header>
+    <div class="btn-row"><span class="label"><strong>Primary</strong>主按钮</span>
+      <div><button class="btn-split btn-primary"><span class="text">开始学习</span><span class="act">→</span></button></div>
+    </div>
+    <div class="btn-row"><span class="label"><strong>Hover</strong>悬停状态</span>
+      <div><button class="btn-split btn-hover"><span class="text">开始学习</span><span class="act">→</span></button></div>
+    </div>
+    <div class="btn-row"><span class="label"><strong>Secondary</strong>次要按钮</span>
+      <div><button class="btn-split btn-secondary"><span class="text">生成报告</span><span class="act">→</span></button></div>
+    </div>
+    <div class="btn-row"><span class="label"><strong>Ghost</strong>文字按钮</span>
+      <div><button class="btn-ghost">了解更多 <span class="arrow">→</span></button></div>
+    </div>
+  </section>
+
+  <!-- ============ 05 INPUTS ============ -->
+  <section class="s">
+    <header><span class="num">05</span><h2>INPUTS</h2><span class="zh">输入框系统</span></header>
+    <div class="grid g-2">
+      <div class="input-group">
+        <span class="ig-label">Default / 默认状态</span>
+        <div class="input-wrap"><input class="input" placeholder="搜索课程、题目、资料..."><span class="icon">🔍</span></div>
+      </div>
+      <div class="input-group">
+        <span class="ig-label">Focus / 聚焦状态</span>
+        <div class="input-wrap"><input class="input" autofocus placeholder="搜索课程、题目、资料..." style="border-color:var(--cm-yellow);box-shadow:0 0 0 4px rgba(255,197,42,0.18);"><span class="icon">🔍</span></div>
+      </div>
+      <div class="input-group">
+        <span class="ig-label">Filled / 已填写</span>
+        <input class="input filled" value="注册会计师 财务成本管理">
+      </div>
+      <div class="input-group">
+        <span class="ig-label">Error / 错误状态</span>
+        <div class="input-wrap"><input class="input error" value="请输入关键词"><span class="icon" style="color:var(--cm-orange);">!</span></div>
+        <span class="err-msg">关键词不能为空</span>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <span class="ig-label" style="font-size:12px;font-weight:600;color:var(--cm-slate);">Textarea / 多行</span>
+      <div class="textarea-wrap" style="margin-top:6px;">
+        <textarea class="textarea" placeholder="把你这次错题的思路写下来，AI 会帮你点评..."></textarea>
+        <span class="counter">0 / 300</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 CHIPS & TAGS ============ -->
+  <section class="s">
+    <header><span class="num">06</span><h2>CHIPS &amp; TAGS</h2><span class="zh">标签系统 · 类别 / 状态 / 自定义</span></header>
+
+    <div style="font-size:11px;font-weight:600;color:var(--cm-mist);margin-bottom:8px;letter-spacing:0.05em;">CATEGORY · 类别（白圆图标 + wash 底）</div>
+    <div class="chip-row" style="margin-bottom:18px;">
+      <span class="chip"><span class="icon-circle"><img src="assets/logo/avatar-icon.png" class="peng peng-18" alt=""/></span>AI 助手</span>
+      <span class="chip sky"><span class="icon-circle">📚</span>Lecture</span>
+      <span class="chip taro"><span class="icon-circle">⭐</span>Quiz</span>
+      <span class="chip orange"><span class="icon-circle">📝</span>Assignment</span>
+    </div>
+
+    <div style="font-size:11px;font-weight:600;color:var(--cm-mist);margin-bottom:8px;letter-spacing:0.05em;">STATUS · 状态（彩点）</div>
+    <div class="chip-row" style="margin-bottom:18px;">
+      <span class="chip-status mint"><span class="dot"></span>已完成</span>
+      <span class="chip-status sky"><span class="dot"></span>进行中</span>
+      <span class="chip-status orange"><span class="dot"></span>重点</span>
+      <span class="chip-status yellow"><span class="dot"></span>热门</span>
+    </div>
+
+    <div style="font-size:11px;font-weight:600;color:var(--cm-mist);margin-bottom:8px;letter-spacing:0.05em;">OUTLINE · 自定义（描边）</div>
+    <div class="chip-row">
+      <span class="tag-outline">新手必备</span>
+      <span class="tag-outline">高频考点</span>
+      <span class="tag-outline">♡ 收藏</span>
+      <span class="tag-outline add">+ 自定义标签</span>
+    </div>
+  </section>
+
+  <!-- ============ 07 TOGGLE & CHECK ============ -->
+  <section class="s">
+    <header><span class="num">07</span><h2>TOGGLE &amp; CHECK</h2><span class="zh">开关与选择</span></header>
+    <div class="grid g-2">
+      <div>
+        <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin-bottom:8px;">Toggle / 开关</div>
+        <div style="display:flex;gap:18px;align-items:center;">
+          <div class="toggle on"><div class="knob"><img src="assets/logo/avatar-icon.png" class="peng peng-22" alt=""/></div></div>
+          <div class="toggle"><div class="knob"></div></div>
+          <span style="font-size:13px;color:var(--cm-slate);">开 / 关</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin-bottom:8px;">Checkbox / 复选框</div>
+        <div class="check-row"><span class="check on"></span><span class="lbl">选项已选中</span></div>
+        <div class="check-row"><span class="check"></span><span class="lbl">未选中</span></div>
+      </div>
+    </div>
+    <div style="margin-top:18px;">
+      <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin-bottom:8px;">Radio / 单选框</div>
+      <div class="check-row"><span class="radio on"></span><span class="lbl">选项一</span></div>
+      <div class="check-row"><span class="radio"></span><span class="lbl">选项二</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 08 ICONS ============ -->
+  <section class="s">
+    <header><span class="num">08</span><h2>ICONS</h2><span class="zh">图标系统 · 线性风格 / 2px 线宽</span></header>
+    <div class="grid g-8">
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M3 12 12 4l9 8"/><path d="M5 10v10h14V10"/></svg><span class="name">首页</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 5h12a3 3 0 0 1 3 3v12H7a3 3 0 0 1-3-3V5z"/><path d="M4 5v12"/></svg><span class="name">课程</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><span class="name">题库</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="9" cy="11" r="1.2"/><circle cx="15" cy="11" r="1.2"/><path d="M9 15c1 1 5 1 6 0"/></svg><span class="name">AI 助手</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 13h6M9 17h4"/></svg><span class="name">错题本</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 4h14v16l-7-4-7 4z"/></svg><span class="name">收藏</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16M9 3v4M15 3v4"/></svg><span class="name">学习计划</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 20V8M10 20V4M16 20v-8M22 20v-4"/></svg><span class="name">成绩</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M8 14l-2 7 6-3 6 3-2-7"/></svg><span class="name">证书</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 6h16v10H7l-3 3z"/></svg><span class="name">消息</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0v5l2 3H4l2-3z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg><span class="name">通知</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="name">设置</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg><span class="name">下载</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="m8 11 8-4M8 13l8 4"/></svg><span class="name">分享</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/></svg><span class="name">更多</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 09 NAVIGATION ============ -->
+  <section class="s">
+    <header><span class="num">09</span><h2>NAVIGATION</h2><span class="zh">导航系统</span></header>
+
+    <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin-bottom:8px;">Top Bar / 顶部导航</div>
+    <div class="nav-top" style="margin-bottom:18px;">
+      <span class="menu">≡</span>
+      <span class="brand"><span class="dot" style="background:transparent;"><img src="assets/logo/avatar-icon.png" class="peng peng-22" alt=""/></span>考证匠</span>
+      <span class="grow"></span>
+      <span class="icon-btn">🔍</span>
+      <span class="icon-btn">🔔</span>
+    </div>
+
+    <div class="grid g-2">
+      <div>
+        <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin-bottom:8px;">Side Bar / 侧边导航（桌面端）</div>
+        <div class="nav-side">
+          <div class="item active">🏠 首页</div>
+          <div class="item">📚 我的课程</div>
+          <div class="item">📝 题库练习</div>
+          <div class="item">🤖 AI 助手</div>
+          <div class="item">📅 学习计划</div>
+          <div class="item">🔖 错题本</div>
+          <div class="item">📊 成绩报告</div>
+          <div class="item">⚙️ 设置</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin-bottom:8px;">Bottom Navigation / 底部导航（移动端）</div>
+        <div class="nav-bottom">
+          <div class="b active">🏠<span>首页</span></div>
+          <div class="b">📚<span>课程</span></div>
+          <div class="b">📝<span>题库</span></div>
+          <div class="b">📅<span>学习</span></div>
+          <div class="b">👤<span>我的</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 PROGRESS & STEPS ============ -->
+  <section class="s">
+    <header><span class="num">10</span><h2>PROGRESS &amp; STEPS</h2><span class="zh">进度与步骤</span></header>
+
+    <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin-bottom:14px;">Progress Bar / 进度条</div>
+    <div class="progress-wrap" style="margin-bottom:30px;">
+      <div class="progress"><div class="bar"></div></div>
+      <div class="tracker"><img src="assets/logo/avatar-icon.png" class="peng peng-32" alt=""/></div>
+      <div class="pct">72%</div>
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin:24px 0 14px;">Steps / 步骤条</div>
+    <div class="steps">
+      <div class="step done"><div class="ball">1</div><div class="lbl">选择考试</div></div>
+      <div class="step-bar done"></div>
+      <div class="step active"><div class="ball">2</div><div class="lbl">基础学习</div></div>
+      <div class="step-bar"></div>
+      <div class="step"><div class="ball">3</div><div class="lbl">强化练习</div></div>
+      <div class="step-bar"></div>
+      <div class="step"><div class="ball">4</div><div class="lbl">模拟考试</div></div>
+      <div class="step-bar"></div>
+      <div class="step"><div class="ball">5</div><div class="lbl">冲刺阶段</div></div>
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--cm-slate);margin:30px 0 14px;">学习数据卡片 / Stats Cards</div>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">128</div><div class="lbl">学习天数</div></div>
+      <div class="stat"><div class="num">36h</div><div class="lbl">学习时长</div></div>
+      <div class="stat"><div class="num">85%</div><div class="lbl">正确率</div></div>
+      <div class="stat"><div class="num">24</div><div class="lbl">课程完成</div></div>
+    </div>
+
+    <div style="display:flex;gap:14px;margin-top:18px;flex-wrap:wrap;">
+      <div class="streak">🔥 连续学习 <span style="font-size:18px;">12</span> 天</div>
+      <div class="keep-going"><img src="assets/logo/avatar-icon.png" class="peng peng-22" alt=""/> 已连续 <strong>12</strong> 天 · Keep going!</div>
+    </div>
+  </section>
+
+  <!-- ============ 11 ALERTS ============ -->
+  <section class="s">
+    <header><span class="num">11</span><h2>ALERTS</h2><span class="zh">提示组件</span></header>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="alert success"><span class="icon-wrap">✓</span><div class="body"><div class="t">操作成功</div><div class="d">你的学习记录已保存</div></div><span class="x">×</span></div>
+      <div class="alert warning"><span class="icon-wrap">!</span><div class="body"><div class="t">注意</div><div class="d">还有 2 个章节未完成学习</div></div><span class="x">×</span></div>
+      <div class="alert danger"><span class="icon-wrap">×</span><div class="body"><div class="t">操作失败</div><div class="d">网络异常，请稍后重试</div></div><span class="x">×</span></div>
+      <div class="alert info"><span class="icon-wrap">i</span><div class="body"><div class="t">提示</div><div class="d">AI 正在为你生成解析内容...</div></div><span class="x">×</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 12 CARDS ============ -->
+  <section class="s">
+    <header><span class="num">12</span><h2>CARDS</h2><span class="zh">卡片组件 · 4 张企鹅插图</span></header>
+    <div class="grid g-4">
+      <div class="card">
+        <div class="pic o"><img src="assets/cards/wrong-book.png" alt="错题本"/></div>
+        <div class="body">
+          <div class="arrow">→</div>
+          <div class="t">错题本</div>
+          <div class="d">智能整理错题，针对性强化练习</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic m"><img src="assets/cards/mock-exam.png" alt="模拟考试"/></div>
+        <div class="body">
+          <div class="arrow">→</div>
+          <div class="t">模拟考试</div>
+          <div class="d">全真模拟环境，检验复习成果</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic y"><img src="assets/cards/study-plan.png" alt="学习计划"/></div>
+        <div class="body">
+          <div class="arrow">→</div>
+          <div class="t">学习计划</div>
+          <div class="d">个性化学习路径，科学安排进度</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic t"><img src="assets/cards/chapter-quiz.png" alt="章节练习"/></div>
+        <div class="body">
+          <div class="arrow">→</div>
+          <div class="t">章节练习</div>
+          <div class="d">逐章击破知识点，题题有 AI 解析</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 MODAL ============ -->
+  <section class="s">
+    <header><span class="num">13</span><h2>MODAL</h2><span class="zh">弹层组件</span></header>
+    <div style="background:var(--cm-canvas);padding:32px;border-radius:var(--cm-radius-md);display:grid;place-items:center;">
+      <div class="modal-frame">
+        <span class="x">×</span>
+        <div class="upload-zone">
+          <div class="ic">☁️</div>
+          <div class="t">上传学习资料</div>
+          <div class="d">支持 PDF、图片，最大 100MB</div>
+        </div>
+        <button class="btn-split btn-primary" style="width:100%;justify-content:center;"><span class="text" style="flex:1;justify-content:center;">选择文件</span><span class="act">↑</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14 DROPDOWN ============ -->
+  <section class="s">
+    <header><span class="num">14</span><h2>DROPDOWN</h2><span class="zh">下拉菜单</span></header>
+    <div class="dropdown">
+      <div class="head">选择考试类别 <span style="color:var(--cm-mist);">▾</span></div>
+      <div class="item active">注册会计师</div>
+      <div class="item">税务师</div>
+      <div class="item">中级会计职称</div>
+      <div class="item">一级建造师</div>
+      <div class="item">法律职业资格</div>
+    </div>
+  </section>
+
+  <!-- ============ 15 PAGINATION ============ -->
+  <section class="s">
+    <header><span class="num">15</span><h2>PAGINATION</h2><span class="zh">分页组件</span></header>
+    <div class="pagi">
+      <span class="b">‹</span>
+      <span class="b">1</span>
+      <span class="b active">2</span>
+      <span class="b">3</span>
+      <span class="b">4</span>
+      <span class="b">5</span>
+      <span class="gap">…</span>
+      <span class="b">›</span>
+      <span class="info">共 86 页，跳至</span>
+      <input class="input" value="2" />
+      <button class="btn-split btn-primary" style="height:32px;font-size:13px;"><span class="text" style="padding:0 14px;">确定</span></button>
+    </div>
+    <div style="margin-top:12px;display:flex;justify-content:flex-end;">
+      <img src="assets/logo/avatar-icon.png" class="peng peng-28" alt="" style="opacity:0.85;"/>
+    </div>
+  </section>
+
+  <!-- ============ 16 TOOLTIP ============ -->
+  <section class="s">
+    <header><span class="num">16</span><h2>TOOLTIPS</h2><span class="zh">气泡提示</span></header>
+    <div class="tooltip-demo">
+      <div class="tooltip">这里是提示文案内容，<br/>帮助你更好地理解功能。</div>
+      <div style="position:absolute;top:60px;left:8px;"><img src="assets/logo/avatar-icon.png" class="peng peng-32" alt=""/></div>
+    </div>
+  </section>
+
+  <!-- ============ 17 / 18 / 19 FOUNDATIONS ============ -->
+  <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;">
+    <section class="s" style="margin-bottom:0;">
+      <header><span class="num">17</span><h2>SPACING</h2><span class="zh">4pt 网格</span></header>
+      <div style="display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap;">
+        <div class="space-cell"><div class="box" style="width:4px;height:4px;"></div><span class="lbl">4</span></div>
+        <div class="space-cell"><div class="box" style="width:8px;height:8px;"></div><span class="lbl">8</span></div>
+        <div class="space-cell"><div class="box" style="width:12px;height:12px;"></div><span class="lbl">12</span></div>
+        <div class="space-cell"><div class="box" style="width:16px;height:16px;"></div><span class="lbl">16</span></div>
+        <div class="space-cell"><div class="box" style="width:24px;height:24px;"></div><span class="lbl">24</span></div>
+        <div class="space-cell"><div class="box" style="width:32px;height:32px;"></div><span class="lbl">32</span></div>
+        <div class="space-cell"><div class="box" style="width:48px;height:48px;"></div><span class="lbl">48</span></div>
+        <div class="space-cell"><div class="box" style="width:64px;height:64px;"></div><span class="lbl">64</span></div>
+      </div>
+    </section>
+
+    <section class="s" style="margin-bottom:0;">
+      <header><span class="num">18</span><h2>RADIUS</h2><span class="zh">圆角</span></header>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <div class="radius-cell"><div class="box" style="width:42px;height:42px;border-radius:4px;"></div><span style="font-family:var(--cm-font-mono);font-size:11px;color:var(--cm-slate);">4</span></div>
+        <div class="radius-cell"><div class="box" style="width:42px;height:42px;border-radius:8px;"></div><span style="font-family:var(--cm-font-mono);font-size:11px;color:var(--cm-slate);">8</span></div>
+        <div class="radius-cell"><div class="box" style="width:42px;height:42px;border-radius:12px;"></div><span style="font-family:var(--cm-font-mono);font-size:11px;color:var(--cm-slate);">12</span></div>
+        <div class="radius-cell"><div class="box" style="width:42px;height:42px;border-radius:16px;"></div><span style="font-family:var(--cm-font-mono);font-size:11px;color:var(--cm-slate);">16</span></div>
+        <div class="radius-cell"><div class="box" style="width:42px;height:42px;border-radius:24px;"></div><span style="font-family:var(--cm-font-mono);font-size:11px;color:var(--cm-slate);">24</span></div>
+        <div class="radius-cell"><div class="box" style="width:42px;height:42px;border-radius:9999px;"></div><span style="font-family:var(--cm-font-mono);font-size:11px;color:var(--cm-slate);">Full</span></div>
+      </div>
+    </section>
+
+    <section class="s" style="margin-bottom:0;">
+      <header><span class="num">19</span><h2>SHADOW</h2><span class="zh">阴影</span></header>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="shadow-cell" style="box-shadow:var(--cm-shadow-sm);padding:10px 14px;text-align:left;">
+          <div class="lbl" style="font-size:13px;">小阴影 · sm</div>
+          <div class="v">0 1px 2px rgba(0,0,0,0.04)</div>
+        </div>
+        <div class="shadow-cell" style="box-shadow:var(--cm-shadow-md);padding:10px 14px;text-align:left;">
+          <div class="lbl" style="font-size:13px;">中阴影 · md</div>
+          <div class="v">0 4px 12px rgba(0,0,0,0.08)</div>
+        </div>
+        <div class="shadow-cell" style="box-shadow:var(--cm-shadow-lg);padding:10px 14px;text-align:left;">
+          <div class="lbl" style="font-size:13px;">大阴影 · lg</div>
+          <div class="v">0 10px 24px rgba(0,0,0,0.10)</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <!-- ============ STICKER ============ -->
+  <section class="s" style="background:var(--cm-canvas);">
+    <header><span class="num">+</span><h2>STICKER</h2><span class="zh">品牌徽章 · 用于公众号/海报右下角签名</span></header>
+    <div style="display:flex;justify-content:center;padding:24px;">
+      <div style="background:var(--cm-ink);color:var(--cm-white);padding:20px 28px;border-radius:var(--cm-radius-xl);box-shadow:var(--cm-shadow-lg);display:flex;align-items:center;gap:18px;max-width:520px;">
+        <img src="assets/logo/avatar.png" alt="" style="width:56px;height:56px;border-radius:50%;background:var(--cm-white);"/>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:22px;font-weight:800;letter-spacing:0.02em;">考证匠</span>
+            <span style="font-size:18px;color:var(--cm-yellow);">✨</span>
+            <span style="font-size:14px;font-weight:700;letter-spacing:0.08em;color:var(--cm-fog);">CERT MASTER</span>
+          </div>
+          <div style="font-size:12px;color:var(--cm-mist);margin-top:2px;">你的 AI 考证搭子，学习更高效</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DO / DON'T ============ -->
+  <section class="s">
+    <header><span class="num">+</span><h2>DO &amp; DON'T</h2><span class="zh">铁律</span></header>
+    <div class="dd-grid">
+      <div class="dd do">
+        <div class="head">✅ Do</div>
+        <ul>
+          <li>页面 bg 用 <code>--cm-canvas (#F5F6F8)</code>，卡片用白</li>
+          <li>主 CTA 一律 <strong>考证黄</strong>（Pill 形）</li>
+          <li>任何成功 / 通过 → 薄荷绿 + 通过啦企鹅</li>
+          <li>错题 / 警告 → 活力橙</li>
+          <li>AI 解析 → 天空蓝 + AI 分析中企鹅</li>
+          <li>题号 / 分数 / 计时 → JetBrains Mono 等宽</li>
+          <li>圆角统一胶囊或 12-24px，杜绝矩形按钮</li>
+        </ul>
+      </div>
+      <div class="dd dont">
+        <div class="head">❌ Don't</div>
+        <ul>
+          <li>不要用纯白 <code>#FFFFFF</code> 做大块页面 bg</li>
+          <li>不要把企鹅换成牛 / 任何动物（牛是 UniMate 的）</li>
+          <li>不要自创新 mascot 表情 — 只用 8 标准态</li>
+          <li>不要在一屏堆 ≥3 种品牌色作为 CTA</li>
+          <li>不要直接用 Ant Design / MUI 默认外观</li>
+          <li>不要把蓝色当主 CTA（蓝是 Info / AI 提示）</li>
+          <li>不要把 PingFang 换成思源 / 微软雅黑作为主体（fallback 可）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p style="text-align:center;color:var(--cm-mist);font-size:11px;margin-top:32px;">
+    Cert Master / 考证匠 · Brand Book v0.1 · JR Academy · 2026-05-11
+  </p>
+</div>
+</body>
+</html>

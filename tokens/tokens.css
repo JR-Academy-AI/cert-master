@@ -1,0 +1,100 @@
+/* =====================================================
+   Cert Master / 考证匠 — Design Tokens (CSS Variables)
+   Tagline: 你的 AI 考证搭子，学习更高效
+   Mascot: Penguin · Grid: 4pt · Font: PingFang SC
+   Source of truth: tokens.json
+   ===================================================== */
+
+:root {
+  /* —— Brand Colors —— */
+  --cm-yellow:  #FFC52A;   /* 考证黄 — primary CTA */
+  --cm-orange:  #FF7A45;   /* 活力橙 — streak / hot */
+  --cm-mint:    #2ECCB2;   /* 薄荷绿 — success */
+  --cm-sky:     #5AA7FF;   /* 天空蓝 — info / AI */
+  --cm-taro:    #A78BFA;   /* 香芋紫 — premium */
+
+  /* —— Neutral —— */
+  --cm-ink:      #111827;
+  --cm-graphite: #374151;
+  --cm-slate:    #6B7280;
+  --cm-mist:     #9CA3AF;
+  --cm-fog:      #E5E7EB;
+  --cm-canvas:   #F5F6F8;  /* 页面默认背景 — 不要纯白 */
+  --cm-white:    #FFFFFF;
+
+  /* —— Wash (10%-ish tint, for chip/alert bg) —— */
+  --cm-wash-yellow: #FFF7DA;
+  --cm-wash-orange: #FFE5D9;
+  --cm-wash-mint:   #DAF5EF;
+  --cm-wash-sky:    #DCE9FF;
+  --cm-wash-taro:   #ECE4FE;
+
+  /* —— Semantic alias —— */
+  --cm-success: var(--cm-mint);
+  --cm-warning: var(--cm-yellow);
+  --cm-danger:  var(--cm-orange);
+  --cm-info:    var(--cm-sky);
+
+  /* —— Radius —— */
+  --cm-radius-xs:   4px;
+  --cm-radius-sm:   8px;
+  --cm-radius-md:   12px;
+  --cm-radius-lg:   16px;
+  --cm-radius-xl:   24px;
+  --cm-radius-full: 9999px;
+
+  /* —— Spacing (4pt grid) —— */
+  --cm-space-1:  4px;
+  --cm-space-2:  8px;
+  --cm-space-3:  12px;
+  --cm-space-4:  16px;
+  --cm-space-6:  24px;
+  --cm-space-8:  32px;
+  --cm-space-12: 48px;
+  --cm-space-16: 64px;
+
+  /* —— Shadow —— */
+  --cm-shadow-sm: 0px 1px 2px rgba(0,0,0,0.04);
+  --cm-shadow-md: 0px 4px 12px rgba(0,0,0,0.08);
+  --cm-shadow-lg: 0px 10px 24px rgba(0,0,0,0.10);
+  --cm-glow-yellow: 0 8px 20px rgba(255,197,42,0.35);
+  --cm-glow-mint:   0 8px 20px rgba(46,204,178,0.30);
+  --cm-glow-sky:    0 8px 20px rgba(90,167,255,0.30);
+
+  /* —— Typography —— */
+  --cm-font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+                  system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --cm-font-mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Code',
+                  Menlo, Consolas, monospace;
+
+  --cm-fs-h1:      34px;
+  --cm-fs-h2:      24px;
+  --cm-fs-h3:      20px;
+  --cm-fs-body:    16px;
+  --cm-fs-caption: 12px;
+
+  --cm-fw-regular:  400;
+  --cm-fw-semibold: 600;
+  --cm-fw-bold:     700;
+
+  --cm-track-tight:  -0.01em;   /* H1 -1% */
+  --cm-track-snug:   -0.005em;  /* H2 -0.5% */
+  --cm-track-normal: 0;
+
+  --cm-lh-heading: 1.25;
+  --cm-lh-body:    1.6;
+
+  /* —— Motion —— */
+  --cm-dur-fast: 120ms;
+  --cm-dur-base: 200ms;
+  --cm-dur-slow: 320ms;
+  --cm-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cm-ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* —— Type presets —— */
+.cm-h1 { font: var(--cm-fw-bold)     var(--cm-fs-h1)/var(--cm-lh-heading) var(--cm-font-sans); letter-spacing: var(--cm-track-tight); color: var(--cm-ink); }
+.cm-h2 { font: var(--cm-fw-semibold) var(--cm-fs-h2)/var(--cm-lh-heading) var(--cm-font-sans); letter-spacing: var(--cm-track-snug);  color: var(--cm-ink); }
+.cm-h3 { font: var(--cm-fw-semibold) var(--cm-fs-h3)/var(--cm-lh-heading) var(--cm-font-sans); letter-spacing: var(--cm-track-normal);color: var(--cm-ink); }
+.cm-body    { font: var(--cm-fw-regular) var(--cm-fs-body)/var(--cm-lh-body)    var(--cm-font-sans); color: var(--cm-graphite); }
+.cm-caption { font: var(--cm-fw-regular) var(--cm-fs-caption)/var(--cm-lh-body) var(--cm-font-sans); color: var(--cm-slate); }
