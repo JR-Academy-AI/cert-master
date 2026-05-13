@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cert Master · App 设计稿参考 · 团队对齐</title>
+  <meta name="description" content="考证匠 App 设计稿参考 — 仅供团队对齐 mascot / 色彩 / 排版调性，不照搬开发" />
+  <link rel="stylesheet" href="tokens/tokens.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--cm-font-sans);
+      background: var(--cm-canvas);
+      color: var(--cm-ink);
+      line-height: var(--cm-lh-body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--cm-graphite); text-decoration: none; }
+    code { font-family: var(--cm-font-mono); font-size: 11px; background: var(--cm-fog); padding: 1px 6px; border-radius: var(--cm-radius-xs); color: var(--cm-graphite); }
+
+    .page { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* —— Sticky nav 跟 index.html 同款 —— */
+    .sticky-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,254,247,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin: 0 -24px 24px;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--cm-fog);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .sticky-nav .brand {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 700; font-size: 14px; color: var(--cm-ink);
+    }
+    .sticky-nav .brand img { width: 28px; height: 28px; border-radius: 50%; }
+    .sticky-nav .nav-links { display: flex; gap: 6px; margin-left: auto; }
+    .sticky-nav .nav-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: var(--cm-radius-full);
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      transition: transform var(--cm-dur-base), background var(--cm-dur-base);
+    }
+    .sticky-nav .nav-link.current { background: var(--cm-ink); color: var(--cm-white); box-shadow: var(--cm-shadow-md); }
+    .sticky-nav .nav-link.subtle { background: var(--cm-canvas); color: var(--cm-graphite); }
+    .sticky-nav .nav-link.subtle:hover { background: var(--cm-fog); }
+    @media (max-width: 700px) {
+      .sticky-nav { gap: 8px; padding: 10px 16px; margin: 0 -16px 16px; }
+      .sticky-nav .brand .label { display: none; }
+      .sticky-nav .nav-link { padding: 6px 10px; font-size: 12px; }
+    }
+
+    .header {
+      background: var(--cm-white);
+      border-radius: var(--cm-radius-lg);
+      padding: 28px 32px;
+      box-shadow: var(--cm-shadow-sm);
+      margin-bottom: 22px;
+    }
+    .header h1 { margin: 0 0 8px; font-size: 28px; font-weight: 800; color: var(--cm-ink); }
+    .header .en { font-size: 13px; color: var(--cm-slate); margin: 0 0 14px; font-weight: 600; letter-spacing: 0.06em; }
+
+    .warning {
+      background: var(--cm-wash-yellow);
+      border-left: 4px solid var(--cm-yellow);
+      padding: 14px 18px;
+      border-radius: var(--cm-radius-sm);
+      font-size: 13px; color: #8E6505;
+      line-height: 1.7;
+    }
+    .warning strong { color: #B0282A; }
+
+    .toc {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px; margin-top: 20px;
+    }
+    .toc a {
+      padding: 10px 14px;
+      background: var(--cm-canvas);
+      border-radius: var(--cm-radius-sm);
+      font-size: 13px; color: var(--cm-graphite);
+      display: flex; align-items: center; gap: 8px;
+      transition: background var(--cm-dur-base);
+    }
+    .toc a:hover { background: var(--cm-wash-yellow); color: var(--cm-ink); }
+    .toc a .num { font-family: var(--cm-font-mono); font-weight: 700; color: var(--cm-mist); font-size: 11px; }
+
+    .ref-card {
+      background: var(--cm-white);
+      border-radius: var(--cm-radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 22px;
+      box-shadow: var(--cm-shadow-sm);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (max-width: 760px) {
+      .ref-card { grid-template-columns: 1fr; }
+    }
+    .ref-meta .num {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--cm-wash-yellow); color: #8E6505;
+      border-radius: var(--cm-radius-xs);
+      font-family: var(--cm-font-mono); font-size: 11px; font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .ref-meta h2 { margin: 0 0 10px; font-size: 18px; font-weight: 700; color: var(--cm-ink); }
+    .ref-meta .desc { font-size: 13px; color: var(--cm-slate); margin-bottom: 14px; }
+    .ref-meta code { font-size: 10px; }
+    .ref-frame {
+      background: var(--cm-canvas);
+      border-radius: var(--cm-radius-md);
+      padding: 18px; text-align: center;
+    }
+    .ref-frame img {
+      max-width: 100%; height: auto;
+      border-radius: var(--cm-radius-sm);
+      box-shadow: var(--cm-shadow-md);
+      display: inline-block;
+    }
+    .ref-frame.tall img { max-width: 380px; }
+    .ref-frame.wide img { max-width: 100%; }
+
+    /* tags */
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tag {
+      font-size: 11px; padding: 3px 10px;
+      border-radius: var(--cm-radius-full);
+      background: var(--cm-wash-yellow); color: #8E6505;
+      font-weight: 600;
+    }
+    .tag.blue { background: var(--cm-wash-sky); color: #2A6BC4; }
+    .tag.gray { background: var(--cm-fog); color: var(--cm-slate); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ STICKY NAV ============ -->
+  <nav class="sticky-nav">
+    <span class="brand">
+      <img src="assets/logo/avatar-icon.png" alt=""/>
+      <span class="label">Cert Master · 考证匠</span>
+    </span>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link subtle">← 品牌手册</a>
+      <a href="app-design-refs.html" class="nav-link current">📐 设计稿参考</a>
+    </div>
+  </nav>
+
+  <div class="header" style="margin-top:8px;">
+    <h1>考证匠 · App 设计稿参考</h1>
+    <p class="en">CERT MASTER · APP DESIGN REFERENCES</p>
+    <div class="warning">
+      <strong>⚠️ 仅供团队对齐参考，不照搬开发</strong>
+      <br/>这 7 张是设计师产出的 App 视觉稿，给团队对齐 mascot 用法 / 色彩 / 排版调性。具体页面实现以产品 PRD 为准，UI 组件直接用 <a href="index.html#section-04">主品牌手册</a> 的 token + 组件。
+    </div>
+    <div class="toc">
+      <a href="#ref-06"><span class="num">06</span>注册流程</a>
+      <a href="#ref-04"><span class="num">04</span>登录 / 注册</a>
+      <a href="#ref-03"><span class="num">03</span>首页</a>
+      <a href="#ref-01"><span class="num">01</span>全部认证</a>
+      <a href="#ref-05"><span class="num">05</span>考试详情</a>
+      <a href="#ref-08"><span class="num">08</span>AI 解题</a>
+      <a href="#ref-07"><span class="num">07</span>我的</a>
+      <a href="#ref-02"><span class="num">02</span>设计系统总览</a>
+    </div>
+  </div>
+
+  <!-- 06 注册流程 -->
+  <div class="ref-card" id="ref-06">
+    <div class="ref-meta">
+      <span class="num">06</span>
+      <h2>注册流程 · 4 步引导</h2>
+      <p class="desc">
+        4 步引导式注册：<strong>创建账号 → 设置账号 → 选择认证目标 → 注册成功</strong>。每步顶部都有进度指示 (1/4, 2/4...)。
+        底部固定 4 个功能 pill（AI 助手 / 学习计划 / 进度追踪 / 题库模考）做产品价值锚定。
+      </p>
+      <div class="tag-row">
+        <span class="tag">Onboarding</span>
+        <span class="tag blue">分步引导</span>
+        <span class="tag gray">Mobile</span>
+      </div>
+      <code style="margin-top:10px;display:inline-block;">app-design-refs/06-register-flow.png</code>
+    </div>
+    <div class="ref-frame wide">
+      <img src="assets/app-design-refs/06-register-flow.png" alt="注册流程"/>
+    </div>
+  </div>
+
+  <!-- 04 登录 / 注册 -->
+  <div class="ref-card" id="ref-04">
+    <div class="ref-meta">
+      <span class="num">04</span>
+      <h2>登录 / 注册 / 新用户福利</h2>
+      <p class="desc">
+        账号登录 + 验证码 双 tab · 三方登录（微信 / 支付宝 / Apple）· <strong>新用户 3 天会员福利卡</strong>（强转化）·
+        下方 4 个 stats 显示平台价值（题库 / 智能 / 提分 / 陪伴）·「学习从未如此高效」转化页 1000+ / 50W+ / 10W+ / 98%。
+      </p>
+      <div class="tag-row">
+        <span class="tag">登录</span>
+        <span class="tag blue">注册转化</span>
+        <span class="tag gray">福利</span>
+      </div>
+      <code style="margin-top:10px;display:inline-block;">app-design-refs/04-login-register.png</code>
+    </div>
+    <div class="ref-frame">
+      <img src="assets/app-design-refs/04-login-register.png" alt="登录注册"/>
+    </div>
+  </div>
+
+  <!-- 03 首页 -->
+  <div class="ref-card" id="ref-03">
+    <div class="ref-meta">
+      <span class="num">03</span>
+      <h2>首页 · 未登录态</h2>
+      <p class="desc">
+        登录 CTA + 4 大入口（海量题库 / 智能分析 / 高效提分 / 轻松拿证）· 热门考试（AWS / PMP / 软考 / 信息安全 / 华为）·
+        「为什么选择考证匠」4 张方案卡 · APP 功能预览 4 张缩略图 · 底部 Tab Bar（首页 / 学习 / 发现 / 我的）。
+      </p>
+      <div class="tag-row">
+        <span class="tag">首页</span>
+        <span class="tag blue">未登录态</span>
+        <span class="tag gray">导航</span>
+      </div>
+      <code style="margin-top:10px;display:inline-block;">app-design-refs/03-home-page.png</code>
+    </div>
+    <div class="ref-frame tall">
+      <img src="assets/app-design-refs/03-home-page.png" alt="首页"/>
+    </div>
+  </div>
+
+  <!-- 01 全部认证 -->
+  <div class="ref-card" id="ref-01">
+    <div class="ref-meta">
+      <span class="num">01</span>
+      <h2>全部认证页 · 列表 + 筛选</h2>
+      <p class="desc">
+        顶部 hero（牛小匠 + slogan「找准目标认证，开启高效备考」）· 筛选 tab（全部 / 云计算 / 安全 / 开发 / 运维 / 数据 / 人工智能）·
+        认证卡片：<strong>badge + 标题 + 3 tag + 难度 5 点 + 学习人数（带 🔥）</strong>。
+      </p>
+      <div class="tag-row">
+        <span class="tag">列表</span>
+        <span class="tag blue">筛选</span>
+        <span class="tag gray">卡片</span>
+      </div>
+      <code style="margin-top:10px;display:inline-block;">app-design-refs/01-cert-list.png</code>
+    </div>
+    <div class="ref-frame tall">
+      <img src="assets/app-design-refs/01-cert-list.png" alt="全部认证页"/>
+    </div>
+  </div>
+
+  <!-- 05 考试详情 -->
+  <div class="ref-card" id="ref-05">
+    <div class="ref-meta">
+      <span class="num">05</span>
+      <h2>考试详情页 · AWS SAA-C03 示例</h2>
+      <p class="desc">
+        顶部任务卡：「正在冲刺」badge + 考试名 + 日期 + <strong>今日进度环形图（32/80）</strong>。
+        三 stats：正确率 68% + 连续 7 天 🔥 + 预计通过率 75%。继续刷题大 CTA。
+        4 入口（模拟考试 / 复习错题 / 收藏 / 学习统计）+ 今日任务 + 知识点掌握情况（4 知识点 + 进度条）+
+        <strong>AI 学习建议</strong>（牛小匠 + 「重点复习 IAM 策略...」）+ 本周/月/全部 数据统计。
+      </p>
+      <div class="tag-row">
+        <span class="tag">考试详情</span>
+        <span class="tag blue">进度</span>
+        <span class="tag gray">AI 建议</span>
+      </div>
+      <code style="margin-top:10px;display:inline-block;">app-design-refs/05-exam-detail.png</code>
+    </div>
+    <div class="ref-frame tall">
+      <img src="assets/app-design-refs/05-exam-detail.png" alt="考试详情"/>
+    </div>
+  </div>
+
+  <!-- 08 AI 解题 -->
+  <div class="ref-card" id="ref-08">
+    <div class="ref-meta">
+      <span class="num">08</span>
+      <h2>AI 解题 · 拍照 / 手动 / 语音 三种输入</h2>
+      <p class="desc">
+        顶部「AI 解题 ✨」+ 副标「AI 智能解题，考证更高效」+ 右上「解题记录」入口 ·
+        <strong>3 个 tab：拍照解题 / 手动输入 / 语音输入</strong>，拍照含「拍照小贴士」（题目清晰 / 避免反光 / 平行拍摄 / 支持 JPG PNG / 10MB）·
+        选择考试 dropdown（AWS SAA-C03）· 题目卡片（单选题）+ 4 选项 · <strong>「AI 解析」+「相关知识点」</strong> 双 tab，AI 置信度 95% 进度条 ·
+        正确答案 + 解析 + 选项分析（A ✓ 绿、B/C/D × 红）+ 「加入错题本 / 再来一题」+ 「有帮助 / 没帮助」反馈 · 底部 Tab Bar（首页 / 学习 / <strong>AI 解题（active）</strong>/ 我的）。
+      </p>
+      <div class="tag-row">
+        <span class="tag">AI 解析</span>
+        <span class="tag blue">3 种输入</span>
+        <span class="tag gray">置信度</span>
+      </div>
+      <code style="margin-top:10px;display:inline-block;">app-design-refs/08-ai-solve.png</code>
+    </div>
+    <div class="ref-frame tall">
+      <img src="assets/app-design-refs/08-ai-solve.png" alt="AI 解题"/>
+    </div>
+  </div>
+
+  <!-- 07 我的 -->
+  <div class="ref-card" id="ref-07">
+    <div class="ref-meta">
+      <span class="num">07</span>
+      <h2>我的 / 个人中心</h2>
+      <p class="desc">
+        用户卡：avatar + 昵称 Lightman + AI 备考中 · 会员用户 + <strong>VIP 会员 badge</strong> + 可用积分 2,860 ⭐。
+        4 stats（学习 56 天 / 刷题 1,680 / 认证 8 个 / 连续 7 天 🔥）。
+        我的学习 2 卡（我的认证 / 错题本）· 常用功能 4 入口 · <strong>鼓励 banner</strong>（焦虑牛小匠：「继续加油，离通过更近一步！」）·
+        账户与服务 5 项（会员中心 / 积分 / 通知 / 通用 / 帮助 / 关于）。
+      </p>
+      <div class="tag-row">
+        <span class="tag">个人中心</span>
+        <span class="tag blue">VIP</span>
+        <span class="tag gray">设置</span>
+      </div>
+      <code style="margin-top:10px;display:inline-block;">app-design-refs/07-profile.png</code>
+    </div>
+    <div class="ref-frame tall">
+      <img src="assets/app-design-refs/07-profile.png" alt="我的页"/>
+    </div>
+  </div>
+
+  <!-- 02 设计系统总览 -->
+  <div class="ref-card" id="ref-02">
+    <div class="ref-meta">
+      <span class="num">02</span>
+      <h2>完整设计系统总览（spec sheet 原图）</h2>
+      <p class="desc">
+        原始设计稿全图：colors / typography / mascot / buttons / inputs / chips / icons / nav / progress / alerts / cards / modal / dropdown / pagination / tooltips / spacing / radius / shadow / sticker。
+        <strong>本品牌手册（index.html）就是基于这张图开发出来的</strong>。开发优先看主手册的对应 section，这张图作为最终视觉锚点。
+      </p>
+      <div class="tag-row">
+        <span class="tag">Spec Sheet</span>
+        <span class="tag blue">全系统</span>
+        <span class="tag gray">总览</span>
+      </div>
+      <code style="margin-top:10px;display:inline-block;">app-design-refs/02-design-system-overview.png</code>
+    </div>
+    <div class="ref-frame wide">
+      <img src="assets/app-design-refs/02-design-system-overview.png" alt="设计系统总览"/>
+    </div>
+  </div>
+
+  <p style="text-align:center;color:var(--cm-mist);font-size:11px;margin-top:32px;">
+    Cert Master · App Design Refs · 2026-05-13 · 7 张设计稿，<a href="index.html" style="color:var(--cm-slate);">返回品牌手册</a>
+  </p>
+</div>
+</body>
+</html>
