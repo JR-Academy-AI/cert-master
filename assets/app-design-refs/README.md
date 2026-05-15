@@ -5,7 +5,7 @@
 | 文件 | 内容 | 用途 |
 |------|------|------|
 | `01-cert-list.png` | 全部认证页 — 列表 + 顶部筛选 tabs | 列表页参考 |
-| `02-design-system-overview.png` | 完整 spec sheet 全图（colors/typo/mascot/...） | 设计系统总览 — 本品牌手册就是基于它做的 |
+| `02-design-system-overview.png` | 完整 spec sheet 全图（colors/typo/mascot/...） | 设计系统总览 — 本设计系统就是基于它做的 |
 | `03-home-page.png` | 首页（未登录 + 4 大入口 + 热门考试 + Why） | 首页交互 / 信息层级 |
 | `04-login-register.png` | 登录 + 注册 + 三方登录 + 新用户福利 | 注册流转化设计 |
 | `05-exam-detail.png` | AWS SAA-C03 考试详情（今日进度 + 任务 + AI 建议） | 考试主功能页 |

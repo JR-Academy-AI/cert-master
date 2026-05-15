@@ -1,6 +1,6 @@
-# Cert Master / 考证匠 — Brand Book
+# Cert Master / 考证匠 — Design System
 
-> 这是一个 **UI 规范 / 品牌手册**，不是产品代码。
+> 这是一个 **UI 规范 / 设计系统**，不是产品代码。
 > 双击 `index.html` 就能看，不需要 npm install / 不需要 build。
 
 ---
@@ -9,7 +9,7 @@
 
 ```
 cert-master/
-├── index.html              ← 品牌手册（19+4 sections，双击打开就能看）
+├── index.html              ← 设计系统（19+4 sections，双击打开就能看）
 ├── tokens/
 │   ├── tokens.json         ← Design tokens 源数据（W3C 格式 / Style Dictionary 兼容）
 │   └── tokens.css          ← CSS Variables（--cm-*），任何项目 import 即可用

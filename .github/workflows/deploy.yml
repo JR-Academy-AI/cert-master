@@ -1,4 +1,4 @@
-name: Deploy Brand Book to GitHub Pages
+name: Deploy Design System to GitHub Pages
 
 on:
   push:

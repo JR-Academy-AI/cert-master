@@ -4,7 +4,7 @@
 > 任何关于「该用什么色、什么字、什么 mascot、什么按钮」的问题，先来这里查。
 >
 > 配套文件：
-> - `index.html` — 视觉品牌手册（双击就能看）
+> - `index.html` — 视觉设计系统（双击就能看）
 > - `tokens/tokens.json` — W3C Design Tokens 源数据
 > - `tokens/tokens.css` — `--cm-*` CSS 变量
 > - `README.md` — 仓库使用说明
@@ -557,7 +557,7 @@ PR diff 出现以下立即打回：
 
 ```
 cert-master/
-├── index.html                ← 视觉品牌手册
+├── index.html                ← 视觉设计系统
 ├── DESIGN.md                 ← 本文件（完整规范）
 ├── README.md                 ← 仓库使用说明
 ├── tokens/
